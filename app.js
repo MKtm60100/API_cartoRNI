@@ -5,11 +5,11 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var uniteRouter = require("./routes/unite");
-var planningRouter = require("./routes/planning");
-var optionRouter = require("./routes/option");
-var creneauRouter = require("./routes/creneau");
+var usersRouter = require("./routes/usersController");
+var uniteRouter = require("./routes/uniteController");
+var planningRouter = require("./routes/planningController");
+var optionRouter = require("./routes/optionController");
+var creneauRouter = require("./routes/creneauController");
 
 var app = express();
 
