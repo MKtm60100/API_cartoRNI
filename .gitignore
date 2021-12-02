@@ -1,0 +1,135 @@
+
+# Créé par https://www.toptal.com/developers/gitignore/api/node
+# Modifier sur https://www.toptal.com/developers/gitignore?templates=node
+
+### Nœud ###
+# Journaux
+journaux
+*.Journal
+npm-debug.log*
+fil-debug.log*
+erreur-fil.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Rapports de diagnostic (https://nodejs.org/api/report.html)
+rapport.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Données d'exécution
+pids
+*.pid
+*.la graine
+*.pid.lock
+
+# Répertoire des bibliothèques instrumentées générées par jscoverage/JSCover
+lib-cov
+
+# Répertoire de couverture utilisé par des outils comme Istanbul
+couverture
+*.lcov
+
+# couverture des tests à New York
+.nyc_output
+
+# Stockage intermédiaire Grunt (https://gruntjs.com/creating-plugins#storing-task-files)
+.grognement
+
+# Répertoire de dépendances Bower (https://bower.io/)
+bower_components
+
+# configuration nœud-waf
+.lock-wscript
+
+# Addons binaires compilés (https://nodejs.org/api/addons.html)
+construire/libérer
+
+# Répertoires de dépendances
+node_modules/
+jspm_paquets/
+
+# Répertoire de dépendance Snowpack (https://snowpack.dev/)
+modules_web/
+
+# Cache TypeScript
+*.tsbuildinfo
+
+# Répertoire de cache npm facultatif
+.npm
+
+# Cache eslint facultatif
+.eslintcache
+
+# Cache de micro-paquet
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Historique REPL facultatif
+.node_repl_history
+
+# Sortie de 'npm pack'
+*.tgz
+
+# Fichier d'intégrité du fil
+.yarn-integrity
+
+# fichier de variables d'environnement dotenv
+.env
+.env.test
+.env.production
+
+# cache colis-groupeur (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Sortie de build Next.js
+.Suivant
+dehors
+
+# Nuxt.js build / générer une sortie
+.nuxt
+dist
+
+# fichiers Gatsby
+.cache/
+# Commentez dans la ligne publique si votre projet utilise Gatsby et non Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# Publique
+
+# sortie de construction vuepress
+.vuepress/dist
+
+# Répertoires sans serveur
+.sans serveur/
+
+# Cache FuseBox
+.fusebox/
+
+# Fichiers locaux DynamoDB
+.dynamodb/
+
+# Fichier de port TernJS
+.tern-port
+
+# Stocke les versions VSCode utilisées pour tester les extensions VSCode
+.vscode-test
+
+# fil v2
+.fil/cache
+.fil/débranché
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+### Patch de nœud ###
+# Répertoires Webpack sans serveur
+.webpack/
+
+# Cache stylelint facultatif
+.stylelintcache
+
+# Construire/générer la sortie SvelteKit
+.svelte-kit
+
+# Fin de https://www.toptal.com/developers/gitignore/api/node
