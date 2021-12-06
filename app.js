@@ -6,11 +6,14 @@ const logger = require("morgan");
 const cors = require("cors");
 const PORT = 4200;
 const indexRouter = require("./routes/indexController");
-const usersRouter = require("./routes/usersController");
+const usersRouter = require("./routes/userController");
 const uniteRouter = require("./routes/uniteController");
 const planningRouter = require("./routes/planningController");
 const optionRouter = require("./routes/optionController");
 const creneauRouter = require("./routes/creneauController");
+const regionRouter = require("./routes/regionController");
+const serviceRouter = require("./routes/serviceController");
+const criseRouter = require("./routes/criseController");
 const client = require("./models/database");
 const { Planning } = require("./mocks/planning");
 const app = express();
@@ -31,6 +34,9 @@ app.use("/planning", planningRouter);
 app.use("/creneau", creneauRouter);
 app.use("/option", optionRouter);
 app.use("/unite", uniteRouter);
+app.use("/region", regionRouter);
+app.use("/crise", criseRouter);
+app.use("/service", serviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -48,6 +54,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-app.listen(4200, () => console.log("Server started: " + PORT));
+app.listen(PORT, () => console.log("Server started: " + PORT));
 
 module.exports = app;
