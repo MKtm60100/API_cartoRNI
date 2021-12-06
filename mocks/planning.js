@@ -7,7 +7,7 @@
     id_creneaux_debut: 1,
     date_fin: 2015 - 05 - 02,
     id_creneaux_fin: 2,
-    type_adresse: DGGN,
+    adresse: "DGGN",
     adresse_temp: "",
     x: 48.815016022925185,
     y: 2.2697020710679734,
