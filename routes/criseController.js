@@ -26,7 +26,7 @@ router.get("/:name", (req, res) => {
 
 router.post("/", (req, result) => {
   let body = req.body;
-  console.log(body);
+  console.log(req.body);
   client.query(
     "INSERT INTO histo_crise(x, y) VALUES (" + body.x + ", " + body.y + ");",
     (err, res) => {

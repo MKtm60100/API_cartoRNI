@@ -8,28 +8,30 @@ const convertToGeoJSON = (rows) => {
     type: "FeatureCollection",
     features: [],
   };
-  for (var i = 0; i < rows.length; i++) {
+  rows.forEach((row) => {});
+  {
     geoJSON.features.push({
       type: "feature",
       geometry: {
         type: "Point",
-        coordinates: [rows[i].x, rows[i].y],
+        coordinates: [row.x, row.y],
       },
       properties: {
-        id_user: rows[i].id_user,
-        code_unite: rows[i].code_unite,
-        id_region: rows[i].id_region,
-        date_debut: rows[i].date_debut,
-        id_creneaux_debut: rows[i].id_creneaux_debut,
-        date_fin: rows[i].date_fin,
-        id_creneaux_fin: rows[i].id_creneaux_fin,
-        adresse: rows[i].adresse,
-        adresse_temp: rows[i].adresse_temp,
-        x: rows[i].x,
-        y: rows[i].y,
-        id_pos_service: rows[i].id_pos_service,
-        id_options: rows[i].id_options,
-        commentaire: rows[i].commentaire,
+        id_user: row.id_user,
+        code_unite: row.code_unite,
+        id_region: row.id_region,
+        date_debut: row.date_debut,
+        id_creneaux_debut: row.id_creneaux_debut,
+        date_fin: row.date_fin,
+        id_creneaux_fin: row.id_creneaux_fin,
+        adresse: row.adresse,
+        adresse_temp: row.adresse_temp,
+        x: row.x,
+        y: row.y,
+        id_pos_service: row.id_pos_service,
+        id_options: row.id_options,
+        dispo: row.color,
+        commentaire: row.commentaire,
       },
     });
   }
@@ -53,8 +55,20 @@ router.get("/", (req, result) => {
 
 // AddNoteToPlanning planning
 
-router.post("/", (req, res) => {
+router.post("/commentaire", (req, result) => {
+  let body = req.body;
   console.log(req.body);
+  client.query(
+    "INSERT INTO planning(commentaire) VALUES (" + body.commentaire + ");",
+    (err, res) => {
+      if (!err) {
+        console.log(res);
+      } else {
+        console.log(err.message);
+      }
+    }
+  );
+  client.end;
 });
 
 // ADD planning
