@@ -1,18 +1,61 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+const PORT = 4200;
+const indexRouter = require("./routes/indexController");
+const usersRouter = require("./routes/userController");
+const uniteRouter = require("./routes/uniteController");
+const planningRouter = require("./routes/planningController");
+const optionRouter = require("./routes/optionController");
+const creneauRouter = require("./routes/creneauController");
+const regionRouter = require("./routes/regionController");
+const serviceRouter = require("./routes/serviceController");
+const criseRouter = require("./routes/criseController");
+const client = require("./models/database");
+const { Planning } = require("./mocks/planning");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
 
-var indexRouter = require("./routes/indexController");
-var usersRouter = require("./routes/usersController");
-var uniteRouter = require("./routes/uniteController");
-var planningRouter = require("./routes/planningController");
-var optionRouter = require("./routes/optionController");
-var creneauRouter = require("./routes/creneauController");
+const app = express();
 
-var app = express();
+// Init Swagger option
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "RNI Management API",
+      version: "1.0.0",
+      servers: ["localhost:4200"],
+    },
+  },
+  apis: ["app.js"],
+};
 
+// Implement Swagger API Docs
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+console.log(swaggerDocs);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+/**
+ * @swagger
+ * /planning:
+ *   get:
+ *    description: GET all planning
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /planning:
+ *  post:
+ *    description: POST new commentaire into PlanningRouter
+ *    parameters:
+ *      -commentaire: The comment
+ */
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -23,12 +66,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// * routes API
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/planning", planningRouter);
 app.use("/creneau", creneauRouter);
 app.use("/option", optionRouter);
 app.use("/unite", uniteRouter);
+app.use("/region", regionRouter);
+app.use("/crise", criseRouter);
+app.use("/service", serviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -45,5 +92,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+app.listen(PORT, () => console.log("Server started: " + PORT));
 
 module.exports = app;

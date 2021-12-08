@@ -1,21 +1,27 @@
 const express = require('express')
 const router = express.Router()
 
-/* GET creneau */
+/* GET ALL users */
 
 router.get('/', (req, res) => {
   res.render(req.body)
 })
 
-// GET BY NAME creneau
+// GET BY NAME user
 
 router.get('/:name', (req, res) => {
   res.render(req.body)
 })
 
-// ADD creneau
+// ADD users
 
 router.post('/', (req, res) => {
+  console.log(req.body)
+})
+
+// UPDATE user
+
+router.put('/:id', (req, res) => {
   console.log(req.body)
 })
 

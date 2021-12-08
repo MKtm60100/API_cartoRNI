@@ -9,12 +9,14 @@ const client = new Client({
 });
 
 client.connect();
+console.log("DB connected");
 
-client.query("select * from USERS", (err, res) => {
+/*client.query("select * from planning;", (err, res) => {
   if (!err) {
     console.log(res.rows);
   }
   client.end();
 });
+*/
 
 module.exports = client;

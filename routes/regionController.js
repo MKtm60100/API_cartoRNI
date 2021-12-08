@@ -1,25 +1,25 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET ALL users */
+/* GET ALL regions */
 
 router.get("/", (req, res) => {
   res.render(req.body);
 });
 
-// GET BY NAME user
+// GET BY NAME region
 
 router.get("/:name", (req, res) => {
   res.render(req.body);
 });
 
-// ADD users
+// ADD regions
 
 router.post("/", (req, res) => {
   console.log(req.body);
 });
 
-// UPDATE user
+// UPDATE region
 
 router.put("/:id", (req, res) => {
   console.log(req.body);

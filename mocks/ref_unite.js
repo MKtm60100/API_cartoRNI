@@ -1,0 +1,38 @@
+[
+  {
+    code_unite: 7,
+    lib_unite: "Marseille",
+    x: 43.438672769978126,
+    y: 5.215250847111583,
+    adresse: "Aéroport Marseille Provence (MRS)",
+    ID_region: 13,
+    department: 13700,
+  },
+  {
+    code_unite: 4,
+    lib_unite: "Rouen",
+    x: 49.447257417431516,
+    y: 1.0746916058679565,
+    adresse: "Cathédrale Notre-Dame de Rouen, Place de la Cathédrale",
+    ID_region: 76,
+    department: 76100,
+  },
+  {
+    code_unite: 5,
+    lib_unite: "Brest",
+    x: 48.3853827648369,
+    y: -4.489439141075777,
+    adresse: "Musée des Beaux-Arts de Brest",
+    ID_region: 29,
+    department: 29200,
+  },
+  {
+    code_unite: 6,
+    lib_unite: "Louvre",
+    x: 48.860822831665004,
+    y: 2.337880032503055,
+    adresse: "Louvre Museum, Rue de Rivoli, Paris",
+    ID_region: 75,
+    department: 75001,
+  },
+];
