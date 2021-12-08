@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const client = require("../models/database");
 const { Planning } = require("../mocks/planning");
-
 const convertToGeoJSON = (rows) => {
   var geoJSON = {
     type: "FeatureCollection",
@@ -14,24 +13,24 @@ const convertToGeoJSON = (rows) => {
       type: "feature",
       geometry: {
         type: "Point",
-        coordinates: [row.x, row.y],
+        coordinates: [rows.x, rows.y],
       },
       properties: {
-        id_user: row.id_user,
-        code_unite: row.code_unite,
-        id_region: row.id_region,
-        date_debut: row.date_debut,
-        id_creneaux_debut: row.id_creneaux_debut,
-        date_fin: row.date_fin,
-        id_creneaux_fin: row.id_creneaux_fin,
-        adresse: row.adresse,
-        adresse_temp: row.adresse_temp,
-        x: row.x,
-        y: row.y,
-        id_pos_service: row.id_pos_service,
-        id_options: row.id_options,
-        dispo: row.color,
-        commentaire: row.commentaire,
+        id_user: rows.id_user,
+        code_unite: rows.code_unite,
+        id_region: rows.id_region,
+        date_debut: rows.date_debut,
+        id_creneaux_debut: rows.id_creneaux_debut,
+        date_fin: rows.date_fin,
+        id_creneaux_fin: rows.id_creneaux_fin,
+        adresse: rows.adresse,
+        adresse_temp: rows.adresse_temp,
+        x: rows.x,
+        y: rows.y,
+        id_pos_service: rows.id_pos_service,
+        id_options: rows.id_options,
+        dispo: rows.color,
+        commentaire: rows.commentaire,
       },
     });
   }

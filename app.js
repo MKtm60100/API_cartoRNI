@@ -16,8 +16,46 @@ const serviceRouter = require("./routes/serviceController");
 const criseRouter = require("./routes/criseController");
 const client = require("./models/database");
 const { Planning } = require("./mocks/planning");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
+
 const app = express();
 
+// Init Swagger option
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "RNI Management API",
+      version: "1.0.0",
+      servers: ["localhost:4200"],
+    },
+  },
+  apis: ["app.js"],
+};
+
+// Implement Swagger API Docs
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+console.log(swaggerDocs);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+/**
+ * @swagger
+ * /planning:
+ *   get:
+ *    description: GET all planning
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /planning:
+ *  post:
+ *    description: POST new commentaire into PlanningRouter
+ *    parameters:
+ *      -commentaire: The comment
+ */
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -28,6 +66,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// * routes API
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/planning", planningRouter);
