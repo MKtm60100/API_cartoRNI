@@ -52,7 +52,7 @@ router.get("/", (req, result) => {
     client.end;
   });
   */
-  res.json([{
+  result.json([{
     "ID_user": 1,
     "Code_unite": 6664,
     "ID_region": 12,
