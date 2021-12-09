@@ -40,7 +40,6 @@ const convertToGeoJSON = (rows) => {
 /* GET planning */
 
 router.get("/", (req, result) => {
-  /*
   client.query("select * from planning;", (err, res) => {
     if (!err) {
       console.log(res.rows);
@@ -51,7 +50,9 @@ router.get("/", (req, result) => {
     }
     client.end;
   });
-  */
+});
+
+/* 
   result.json([
     {
       ID_user: 1,
@@ -84,6 +85,24 @@ router.get("/", (req, result) => {
       Commentaire: "Test 2",
     },
   ]);
+});
+*/
+
+// GET planning by ID_region
+router.get("/", (req, result) => {
+  client.query(
+    "select * from planning where ID_region = 54864;",
+    (err, res) => {
+      if (!err) {
+        console.log(res.rows);
+        res.rows = convertToGeoJSON(res.rows);
+        result.json(res.rows);
+      } else {
+        console.log(err.message);
+      }
+      client.end;
+    }
+  );
 });
 
 // AddNoteToPlanning planning

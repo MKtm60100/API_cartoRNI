@@ -38,11 +38,61 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 console.log(swaggerDocs);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 /**
  * @swagger
+ * tags:
+        - planning
+          summary: CRUD planning
+          operationId: GET planning
  * /planning:
+ *    get:
+ *     description: By passing in the appropriate ID_region, you can search for available planning
+ *     parameters:
+ *      - name: ID_region
+ *        schema:
+ *          type: string
+ *          required: false
+ *    responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *        application/json:
+ *        schema:
+ *          type: object
+ *          properties:
+ *            id_user: 
+ *              type: integer
+ *            code_unite: 
+ *              type: integer
+ *            id_region:
+ *              type: integer
+ *          exemple:
+ *            id_user: 468478
+ *            code_unite: 7
+ *            id_region: 4          
+ */
+
+/**
+ * @swagger
+ * /planning{commentaire}:
+ *  post:
+ *    parameters:
+ *    - description: POST new commentaire into Planning
+ *      name: commentaire
+ *      schema:
+ *        type: string
+ *        required: true
+ *        responses:
+ *        201:
+ *          description: Created success
+ */
+
+/**
+ * @swagger
+ * /crise:
  *   get:
- *    description: GET all planning
+ *    description: GET all crise
  *    responses:
  *      200:
  *        description: Success
@@ -50,17 +100,122 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 /**
  * @swagger
- * /planning:
- *  post:
- *    description: POST new commentaire into PlanningRouter
- *    parameters:
- *      -commentaire: The comment
+ * /creneau:
+ *   get:
+ *    description: GET all creneau
+ *    responses:
+ *      200:
+ *        description: Success
  */
+
+/**
+ * @swagger
+ * /creneau:
+ *   get:
+ *     parameters:
+ *      - name: ID
+ *      schema:
+ *      type: string
+ *      required: true
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /option:
+ *   get:
+ *    description: GET all option
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /option{}:
+ *    post:
+ *      parameters:
+ *        - description: POST new option into ref_options
+ *          name: ID_option
+ *          schema:
+ *            type: string
+ *            required: true
+ *            name: lib_option
+ *          schema:
+ *            type: string
+ *            required: true
+ *            responses:
+ *              201:
+ *                description: Created success
+ */
+
+/**
+ * @swagger
+ * /option:
+ *  post:
+ *    parameters:
+ *    - description: POST new option INTO ref_options
+ *      name: ID_option
+ *      schema:
+ *        type: string
+ *        required: true
+ *    - name: lib_option
+ *      schema:
+ *        type: string
+ *        required: true
+ *        responses:
+ *        201:
+ *          description: Created success
+ */
+
+/**
+ * @swagger
+ * /region:
+ *   get:
+ *    description: GET all regions
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /service:
+ *   get:
+ *    description: GET all service
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /unite:
+ *   get:
+ *    description: GET all unite
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
+/**
+ * @swagger
+ * /user:
+ *   get:
+ *    description: GET all user
+ *    responses:
+ *      200:
+ *        description: Success
+ */
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -68,7 +223,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // * routes API
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", usersRouter);
 app.use("/planning", planningRouter);
 app.use("/creneau", creneauRouter);
 app.use("/option", optionRouter);
