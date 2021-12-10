@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const PORT = 4200;
 const indexRouter = require("./routes/indexController");
 const usersRouter = require("./routes/userController");
 const uniteRouter = require("./routes/uniteController");
@@ -247,7 +246,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-app.listen(PORT, () => console.log("Server started: " + PORT));
 
 module.exports = app;
